@@ -3,7 +3,7 @@
         <article class="card-content">
             <img class="rounded-t-md card-thumbnail w-full" :src="card.thumbnail" :alt="card.title" rel="preload" as="image">
 
-            <div class="rounded-b-md bg-gray-800 text-gray-100 p-3">
+            <div class="rounded-b-md bg-gray-800 p-3">
                 <p class="text-xl font-bold max-w-prose">{{ card.title }}</p>
                 <p class="text-gray-400">{{ card.developer }}</p>
 
@@ -14,7 +14,7 @@
             </div>
         </article>
 
-        <div class="card-description absolute top-0 z-10 text-gray-100 bg-gray-600 bg-opacity-75 h-full w-full rounded-md p-5">
+        <div class="card-description absolute top-0 z-10 bg-gray-600 bg-opacity-75 h-full w-full rounded-md p-5">
             <p>{{ card.short_description }}</p>
         </div>
     </nuxt-link>

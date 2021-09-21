@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900">
+  <div class="">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5">
       <GameCard v-for="card in cards" :key="card.id" :card="card" />
     </div>
