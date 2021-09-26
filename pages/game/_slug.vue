@@ -1,5 +1,5 @@
 <template>
-    <div class="m-5">
+    <div class="m-5 md:m-10 lg:m-20">
         <!-- <section class="mt-2">
           <div class="flex justify-between p-2 border-b border-gray-400 border-opacity-25">
             <p class="text-gray-400">Desenvolvedor</p>
@@ -19,24 +19,31 @@
           </div>
         </section> -->
         <section>
-          <div>
-            <h1 class="text-xl font-semibold mb-3">{{ game.title }}</h1>
-            <img class="rounded w-full" :src="game.thumbnail" :alt="game.title">
-            
-            <div>
-              <p class="text-xl mt-3">{{ game.short_description }}</p>
-              <p v-if="checked_description" class="text-base mt-3">{{ game.description }}</p>
-              <div class="grid grid-cols-1 my-1">
-                <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1">SHOW MORE <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
+          <div class="grid grid-cols-1 md:grid-cols-3 relative">
+            <div class="md:col-span-2">
+              <h1 class="text-xl font-semibold mb-3 -mt-5">{{ game.title }}</h1>
+              <div class="hidden md:block">
+                <img class="rounded w-full" :src="game.screenshots[0].image" :alt="game.title">
+                <p><i class="bi bi-info-circle mr-1"></i> Aqui seria um trailer do game</p>
               </div>
             </div>
+            
+            <div class="md:ml-10 md:mt-5">
+              <img class="rounded w-full" :src="game.thumbnail" :alt="game.title">
+              <p class="text-xl mt-3">TAGS: <span class="text-base border rounded p-1 ml-2">FREE</span> <span class="text-base border rounded p-1 ml-2">{{ game.genre }}</span></p>
+              <p class="text-xl mt-3">{{ game.short_description }}</p>
 
-            <div class="grid grid-cols-1">
-              <a class="text-center rounded py-3 bg-gradient-to-b from-blue-400 to-indigo-900 hover:to-indigo-700 mt-3 transition duration-700 ease-in-out" :href="game.game_url">GET</a>
+              <div class="grid grid-cols-1">
+                <a class="text-center rounded py-3 bg-gradient-to-b from-blue-400 to-indigo-900 hover:to-indigo-700 mt-3 transition duration-700 ease-in-out" :href="game.game_url">GET</a>
+              </div>
             </div>
           </div>
 
-          <div class="mt-4 border-t border-b border-opacity-25 grid grid-cols-2 gap-5 py-5">
+          <div class="mt-4 border-t border-b border-opacity-25 grid grid-cols-2 md:grid-cols-3 gap-5 py-5">
+            <article>
+              <p class="text-sm text-gray-500">TITLE</p>
+              <p>{{ game.title }}</p>
+            </article>
             <article>
               <p class="text-sm text-gray-500">GENRE</p>
               <p>{{ game.genre }}</p>
@@ -57,17 +64,27 @@
               <p class="text-sm text-gray-500">PLATFORM</p>
               <p>{{ game.platform }}</p>
             </article>
-            <article>
-              <p class="text-sm text-gray-500">PRICE</p>
-              <p> Free </p>
-            </article>
+          </div>
+        </section>
+
+        <section class="mt-5">
+          <h1 class="text-xl font-semibold mb-3">{{ game.title }} Screenshots</h1>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <img class="rounded" v-for="screenshot in game.screenshots" :key="screenshot.id" :src="screenshot.image" alt="">
+          </div>
+
+          <div class="mt-5">
+            <p v-if="checked_description" class="text-base mt-3">{{ game.description }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 my-1">
+              <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1">GAME DESCRIPTION <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
+            </div>
           </div>
         </section>
 
         <section class="mt-5">
           <h1 class="text-xl font-semibold mb-3">Minimum requirements</h1>
 
-          <div class="game-requirements p-5 rounded grid grid-cols-2 gap-5">
+          <div class="game-requirements p-5 rounded grid grid-cols-2 md:grid-cols-3 gap-5">
             <article>
               <p class="text-sm text-gray-500">Operational System - SO</p>
               <p>{{ game.minimum_system_requirements.os }}</p>
@@ -90,10 +107,6 @@
             </article>
           </div>
         </section>
-
-        <section>
-          <img v-for="screenshot in game.screenshots" :key="screenshot.id" :src="screenshot.image" alt="">
-        </section>
     </div>
 </template>
 
@@ -109,6 +122,7 @@ export default {
 
   async asyncData(route) {
     const gameID = route.params.slug
+    console.log(gameID)
     const api = `https://www.freetogame.com/api/game?id=${gameID}`
     const game = await axios.get(api).then((response) => {
       return response.data
