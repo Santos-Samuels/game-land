@@ -24,7 +24,7 @@
               <h1 class="text-xl font-semibold mb-3 -mt-5">{{ game.title }}</h1>
               <div class="hidden md:block">
                 <img class="rounded w-full" :src="game.screenshots[0].image" :alt="game.title">
-                <p><i class="bi bi-info-circle mr-1"></i> Aqui seria um trailer do game</p>
+                <p class="text-right"><i class="bi bi-info-circle mr-1"></i> Aqui seria um trailer do game</p>
               </div>
             </div>
             
@@ -70,13 +70,15 @@
         <section class="mt-5">
           <h1 class="text-xl font-semibold mb-3">{{ game.title }} Screenshots</h1>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <img class="rounded" v-for="screenshot in game.screenshots" :key="screenshot.id" :src="screenshot.image" alt="">
+            <img class="rounded cursor-pointer" v-for="screenshot in game.screenshots" :key="screenshot.id" :src="screenshot.image" v-on:click="screenshot_info.image = screenshot.image, screenshot_info.toggle = true">
           </div>
+          
+          <Screenshot :screenshot_info="screenshot_info" />
 
           <div class="mt-5">
             <p v-if="checked_description" class="text-base mt-3">{{ game.description }}</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 my-1">
-              <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1">GAME DESCRIPTION <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
+            <div class="grid grid-cols-1 md:grid-cols-2 my-1 justify-center">
+              <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1 md:col-start-2 md:col-span-3">GAME DESCRIPTION <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
             </div>
           </div>
         </section>
@@ -116,13 +118,13 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      checked_description: false
+      checked_description: false,
+      screenshot_info: { image: '', toggle: false }
     }
   },
 
   async asyncData(route) {
     const gameID = route.params.slug
-    console.log(gameID)
     const api = `https://www.freetogame.com/api/game?id=${gameID}`
     const game = await axios.get(api).then((response) => {
       return response.data
