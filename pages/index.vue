@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5">
+    <Header />
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-20 my-10">
       <GameCard v-for="card in cards" :key="card.id" :card="card" />
     </div>
 
@@ -8,9 +9,12 @@
 </template>
 
 <script>
+import Header from '@/components/layout/Header.vue'
 import axios from 'axios'
 
 export default {
+  components: { Header },
+
   async asyncData() {
     const api = 'https://www.freetogame.com/api/games'
     const cards = await axios.get(api).then((response) => {
