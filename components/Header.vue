@@ -1,5 +1,5 @@
 <template>
-    <div class="px-20 py-3 bg-gray-800 border-b border-gray-500 flex items-center justify-between">
+    <div class="px-20 px-5 md:px-10 lg:px-20 py-3 bg-gray-800 border-b border-gray-500 flex items-center justify-between">
         <div class=" flex items-center space-x-10">
             <div class="logo">
                 <p class="font-bold text-4xl"><i class="bi bi-controller text-4xl mr-3 text-blue-600"></i>GAME<span class="text-blue-600">LAND</span></p>
