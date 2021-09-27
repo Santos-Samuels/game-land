@@ -9,12 +9,9 @@
 </template>
 
 <script>
-import Header from '@/components/layout/Header.vue'
 import axios from 'axios'
 
 export default {
-  components: { Header },
-
   async asyncData() {
     const api = 'https://www.freetogame.com/api/games'
     const cards = await axios.get(api).then((response) => {
