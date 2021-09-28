@@ -13,10 +13,19 @@ import axios from 'axios'
 
 export default {
   async asyncData() {
-    const api = 'https://www.freetogame.com/api/games'
-    const cards = await axios.get(api).then((response) => {
+    var options = {
+      method: 'GET',
+      url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+      headers: {
+        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
+        'x-rapidapi-key': 'eb4f08aa35msh3746b2d4c081463p10e00ajsn1130b1d401f0'
+      }
+    };
+
+    const cards = await axios(options).then(function (response) {
       return response.data
-    }) 
+    })
+
     return { cards }
   }
 }

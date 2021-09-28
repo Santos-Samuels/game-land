@@ -2,7 +2,7 @@
     <div>
         <Header />
 
-        <div class="m-5 md:m-10 lg:m-20">
+        <div class="m-5 md:m-10 lg:m-20 py-5">
           <section>
             <div class="grid grid-cols-1 md:grid-cols-3 relative">
               <div class="md:col-span-2">
