@@ -39,7 +39,7 @@
               </article>
               <article>
                 <p class="text-sm text-gray-500">RELEASE DATE</p>
-                <p>{{ game.release_date }}</p>
+                <p>{{ new Date(game.release_date).getDate() + ' de ' + new Date(game.release_date).toLocaleString('default', { month: 'long' }) }}</p>
               </article>
               <article>
                 <p class="text-sm text-gray-500">DEVELOPER</p>
@@ -71,7 +71,7 @@
           <section class="mt-5">
             <h1 class="text-xl font-semibold mb-3">Minimum requirements</h1>
 
-            <div class="game-requirements p-5 rounded grid grid-cols-2 md:grid-cols-3 gap-5">
+            <div class="bg-dracula p-5 rounded grid grid-cols-2 md:grid-cols-3 gap-5">
               <article>
                 <p class="text-sm text-gray-500">Operational System - SO</p>
                 <p>{{ game.minimum_system_requirements.os }}</p>
@@ -145,7 +145,4 @@ export default {
 </script>
 
 <style scoped>
-.game-requirements {
-  background-color: #202020;
-}
 </style>

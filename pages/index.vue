@@ -1,8 +1,7 @@
 <template>
   <div class="">
-    <Header />
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5 md:mx-10 lg:mx-20 my-10">
-      <GameCard v-for="card in cards" :key="card.id" :card="card" />
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5 md:mx-10 lg:mx-20 my-8">
+      <h1>Here's the home page</h1>
     </div>
 
   </div>

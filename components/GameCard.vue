@@ -1,11 +1,11 @@
 <template>
-    <nuxt-link tag="a" :to="'/game/' + card.id" class="relative card-container">
+    <nuxt-link tag="a" :to="'/games/' + card.id" class="relative card-container">
         <article class="card-content">
             <img class="rounded-t-md card-thumbnail w-full" :src="card.thumbnail" :alt="card.title" rel="preload" as="image">
 
             <div class="rounded-b-md bg-gray-800 p-3">
-                <p class="text-xl font-bold max-w-prose">{{ card.title }}</p>
-                <p class="text-gray-400">{{ card.developer }}</p>
+                <p class="text-xl font-bold max-w-prose truncate">{{ card.title }}</p>
+                <p class="text-gray-400 truncate">{{ card.developer }}</p>
 
                 <div class="flex justify-between mt-5">
                     <span class="bg-green-500 px-1 rounded">FREE</span>
