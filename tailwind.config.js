@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       colors: {
         'dracula': '#202020'
+      },
+      zIndex: {
+        '60': 60,
+        '70': 70
       }
     },
   },

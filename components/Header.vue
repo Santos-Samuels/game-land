@@ -1,5 +1,5 @@
 <template>
-    <header class="px-5 md:px-10 lg:px-20 py-3 bg-gray-900 sticky z-50 top-0 w-full shadow-lg">
+    <header class="px-5 md:px-10 lg:px-20 py-3 bg-gray-900 sticky z-40 top-0 w-full shadow-lg">
         <section class="flex items-center justify-between">
             <div class=" flex items-center md:space-x-10">
                 <nuxt-link tag="a" to="/" class="logo">
