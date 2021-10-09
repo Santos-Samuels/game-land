@@ -9,15 +9,14 @@
                 <nav class="text-gray-500 font-semibold absolute md:static top-14 bg-gray-900 py-7 md:py-0 w-full -mx-5 px-10 md:px-0 md:block" :class="!toggle ? 'hidden' : null" v-on:click="toggleMenu()">
                     <div class="flex flex-col md:block text-xl md:text-base space-y-2 md:space-y-0 md:space-x-2">
                         <nuxt-link class="hover:text-gray-100" tag="a" :to="{ name: 'games' }">All Games</nuxt-link>
-                        <nuxt-link class="hover:text-gray-100" tag="a" to="#">PC</nuxt-link>
-                        <nuxt-link class="hover:text-gray-100" tag="a" to="#">Browser</nuxt-link>
-                        <nuxt-link class="hover:text-gray-100" tag="a" to="#">Top 2021</nuxt-link>
+                        <nuxt-link class="hover:text-gray-100" tag="a" :to="{ name: 'games', query: { platform: 'pc' } }">PC</nuxt-link>
+                        <nuxt-link class="hover:text-gray-100" tag="a" :to="{ name: 'games', query: { platform: 'browser' } }">Browser</nuxt-link>
                     </div>
                 </nav>
             </div>
 
             <div class="text-gray-500 text-lg md:text-xl space-x-2 hidden md:block">
-                <nuxt-link tag="a" to="#" class="bi bi-search hover:text-gray-100" title="Search for games"></nuxt-link>
+                <nuxt-link tag="a" to="/games" class="bi bi-search hover:text-gray-100" title="Search for games"></nuxt-link>
                 <i class="bi bi-globe hover:text-gray-100 cursor-pointer"></i>
             </div>
 
@@ -39,7 +38,8 @@ export default {
 
     methods: {
         toggleMenu() {
-            this.toggle = !this.toggle
+            if(screen.width < 768)
+                this.toggle = !this.toggle
         }
     }
 }
