@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="m-5 md:m-10 lg:m-20 py-5">
+        <div class="mx-5 md:mx-10 lg:mx-20 my-8">
           <section>
             <div class="grid grid-cols-1 md:grid-cols-3 relative">
               <div class="md:col-span-2">
@@ -13,7 +13,7 @@
               
               <div class="md:ml-10 md:mt-5">
                 <img class="rounded w-full" :src="game.thumbnail" :alt="game.title">
-                <p class="text-xl mt-3">TAGS: <span class="text-base border rounded p-1 ml-2">FREE</span> <span class="text-base border rounded p-1 ml-2">{{ game.genre }}</span></p>
+                <p class="text-xl mt-3">TAGS: <span class="text-base bg-green-500 rounded p-1 ml-2">FREE</span> <nuxt-link tag="a" :to="{ path: '/games', query: { category: game.genre }}" class="text-base border rounded p-1 ml-2 hover:bg-gray-600">{{ game.genre }}</nuxt-link></p>
                 <p class="text-xl mt-3">{{ game.short_description }}</p>
 
                 <div class="grid grid-cols-1">
@@ -37,7 +37,7 @@
               </article>
               <article>
                 <p class="text-sm text-gray-500">RELEASE DATE</p>
-                <p>{{ new Date(game.release_date).getDate() + ' de ' + new Date(game.release_date).toLocaleString('default', { month: 'long' }) }}</p>
+                <p>{{ new Date(game.release_date).getDate() + ' de ' + new Date(game.release_date).toLocaleString('default', { month: 'long' }) + ' de ' + new Date(game.release_date).getFullYear() }}</p>
               </article>
               <article>
                 <p class="text-sm text-gray-500">DEVELOPER</p>
@@ -57,16 +57,16 @@
             </div>
             
             <Screenshot :screenshot_info="screenshot_info" />
-
-            <div class="mt-5">
-              <p v-if="checked_description" class="text-base mt-3">{{ game.description }}</p>
-              <div class="grid grid-cols-1 md:grid-cols-2 my-1 justify-center">
-                <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1 md:col-start-2 md:col-span-3">GAME DESCRIPTION <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
-              </div>
-            </div>
           </section>
 
           <section class="mt-5">
+            <p v-if="checked_description" class="text-base mt-3">{{ game.description }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 my-1 justify-center">
+              <button v-on:click="toggleDescription()" class="bg-gray-600 bg-opacity-50 rounded py-1 md:col-start-2 md:col-span-3">GAME DESCRIPTION <i class="ml-1" :class="checked_description ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i></button>
+            </div>
+          </section>
+
+          <section class="mt-5" v-if="game.minimum_system_requirements">
             <h1 class="text-xl font-semibold mb-3">Minimum requirements</h1>
 
             <div class="bg-dracula p-5 rounded grid grid-cols-2 md:grid-cols-3 gap-5">

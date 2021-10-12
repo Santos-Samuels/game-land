@@ -1,11 +1,11 @@
 <template>
   <div class="">
-    <div class="bg-gradient-to-r from-blue-400 via-indigo-900 to-blue-600 w-full h-10 transform skew-y-2"></div>
+    <div class="bg-gradient-to-r from-blue-400 via-indigo-900 to-blue-600 w-full h-10 transform skew-y-3"></div>
     
-    <section class="grid grid-cols-1 md:grid-cols-2 bg-blue-500 bg-opacity-25 px-5 md:px-10 lg:px-20 py-16 transform skew-y-2 mt-6">
+    <section class="grid grid-cols-1 md:grid-cols-2 bg-blue-500 bg-opacity-25 px-5 md:px-10 lg:px-20 py-16 transform skew-y-3 mt-6">
       <div>
         <h1 class="text-3xl md:text-5xl font-semibold mb-3">Free Games</h1>
-        <h1 class="text-gray-400 font-semibold">We are GameLand, a new gaming platform that brings all the best free multiplayer and MMO games in one place.</h1>
+        <h1 class="text-gray-400 font-semibold">We are GameLand, a new gaming platform that brings to you all the best free multiplayer and MMO games in one place.</h1>
       </div>
     </section>
     

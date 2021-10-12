@@ -15,9 +15,9 @@
                 </nav>
             </div>
 
-            <div class="text-gray-500 text-lg md:text-xl space-x-2 hidden md:block">
-                <nuxt-link tag="a" to="/games" class="bi bi-search hover:text-gray-100" title="Search for games"></nuxt-link>
-                <i class="bi bi-globe hover:text-gray-100 cursor-pointer"></i>
+            <div class="text-gray-500 space-x-2 hidden md:block">
+                <nuxt-link tag="a" to="/games" class="bi bi-search hover:text-gray-100 text-xl" title="Search for games"></nuxt-link>
+                <nuxt-link tag="a" to="/login" class="bi bi-person-fill hover:text-gray-100 cursor-pointer text-2xl" title="Login"></nuxt-link>
             </div>
 
             <div class="block md:hidden">
